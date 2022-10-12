@@ -1,20 +1,19 @@
 board = ["-", "-", "-",
         "-", "-", "-",
-        "-", "-", "-",]
+        "-", "-", "-"]
+
 player = "X"
 winner = None
 gameRunning = True
 
 #print Game board
-def printBoard(board): 
+def main(board): 
     print(board[0] + " | " + board[1] + " | " + board[2])
     print("---------")
     print(board[3] + " | " + board[4] + " | " + board[5])
     print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
     
-printBoard(board)
-
 #Player imput
 def playerInput(board):
     inp = int(input("Enter a number 1 - 9: "))
@@ -50,20 +49,36 @@ def checkVertical(board):
 
 def checkDiagnal(board):
     global winner
-    if board[0] == board[4] == board[8] and  board[0] != "-":
+    if board[0] == board[4] == board[8] and  board[4] != "-":
         winner = board[0]
         return True
-    elif board[2] == board[4] == board[6] and board[3] != "-":
+    elif board[2] == board[4] == board[6] and board[2] != "-":
         winner = board[2]
         return True
 
 def checkTie(board):
+    global gameRunning
     if "-" not in board:
-        printBoard(board)
+        main(board)
         print("Tie Game!")
         gameRunning = False
 
+def win():
+    global gameRunning
+    if checkDiagnal(board) or checkHorizontle(board) or checkVertical(board):
+        print(f"the winner is {winner}")
+        gameRunning = False
+
+def yourTurn():
+    global player
+    if player == "X":
+        player = "O"
+    else:
+        player = "X"
 
 while gameRunning:
-    printBoard(board)
+    main(board)
     playerInput(board)
+    win()
+    checkTie(board)
+    yourTurn()
