@@ -1,3 +1,5 @@
+#Tic-Tac-Toe Assignment by David Hatton
+
 board = ["-", "-", "-",
         "-", "-", "-",
         "-", "-", "-"]
