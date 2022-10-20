@@ -22,7 +22,7 @@ class Die:
         Args:
             self (Die): An instance of Die.
         """
-        self.value = 0
+        self.value = []
         self.points = 0
 # 3) Create the roll(self) method. Use the following method comment.
     def roll(self):
@@ -34,10 +34,10 @@ class Die:
         """
         self.value = random.randint(1, 6)
         if self.value == 1:
-            self.points = 100
-        if self.value == 5:
-            self.points = 50
-        else:
-            self.points = 0
+            self.points = self.points + 100
+        elif self.value == 5:
+            self.points = self.points + 50
+        elif self.value != 1 or 5:
+            self.points == 0
         
         

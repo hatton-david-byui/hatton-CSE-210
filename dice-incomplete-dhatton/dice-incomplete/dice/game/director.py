@@ -77,12 +77,6 @@ class Director:
         for i in range(len(self.dice)):
             die = self.dice[i]
             values += f"{die.value} "
-            if 1 in self.dice:
-                self.is_playing = TRUE
-            if 5 in self.dice:
-                self.is_playing = TRUE
-            else:
-                self.is_playing = FALSE
 
         print(f"You rolled: {values}")
         print(f"Your score is: {self.total_score}\n")
